@@ -11,7 +11,11 @@ export default ({ match:{ url }, writers })=>
         </li>
         )}
     </ul>
-    <Route path={ `${url}/:writerId` }  render= {
+<Route  path={url} render={ 
+    ()=> <h3>Texto de libro</h3>} 
+    />
+
+    <Route exact path={ `${url}/:writerId` }  render= {
        ({match}) => <Writer {...writers.find(writer  =>  writer.id === match.params.writerId)}/>
         }/>
 </Fragment>
