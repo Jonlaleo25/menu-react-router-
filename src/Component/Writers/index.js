@@ -1,7 +1,7 @@
 import  React, { Fragment} from 'react';
-import {Link, Route }    from  'react-router-dom';
+import {Link, Route, Redirect }    from  'react-router-dom';
 import Writer  from  './Writer'; 
-
+import NotFound from '../Errors/404';
 export default ({ match:{ url }, writers })=>
 <Fragment>
     <ul>
@@ -12,10 +12,16 @@ export default ({ match:{ url }, writers })=>
         )}
     </ul>
 <Route  path={url} render={ 
-    ()=> <h3>Texto de libro</h3>} 
+    ()=> <h3>selecciona algun dato</h3>} 
     />
 
     <Route exact path={ `${url}/:writerId` }  render= {
-       ({match}) => <Writer {...writers.find(writer  =>  writer.id === match.params.writerId)}/>
+       ({match}) =>{
+           const writer = writers.find(writer  =>  writer.id === match.params.writerId)
+           if(!writer){
+               return <NotFound />
+           }
+             return <Writer {...writer}/>
+          } 
         }/>
 </Fragment>
