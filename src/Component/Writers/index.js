@@ -12,11 +12,11 @@ export default ({ match:{ url }, writers })=>
         </li>
         )}
     </ul>
-<Route  path={url} render={ 
+<Route exact path={url} render={ 
     ()=> <h3>selecciona algun dato</h3>} 
     />
 
-    <Route exact path={ `${url}/:writerId` }  render= {
+    <Route  path={ `${url}/:writerId` }  render= {
        props =>{
            const writer = writers.find(writer  =>  writer.id === props.match.params.writerId)
            if(!writer){
