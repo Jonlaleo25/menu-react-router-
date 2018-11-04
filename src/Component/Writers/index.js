@@ -18,7 +18,7 @@ export default ({ match:{ url }, writers })=>
 
     <Route  path={ `${url}/:writerId` }  render= {
        props =>{
-           const writer = writers.find(writer  =>  writer.id === props.match.params.writerId)
+           const writer = writers.find(({id})  =>  id === props.match.params.writerId)
            if(!writer){
                return <NotFound />
            }

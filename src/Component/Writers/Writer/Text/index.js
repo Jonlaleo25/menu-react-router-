@@ -5,10 +5,10 @@ export default  ({ title, description, published}) =>
     <h4>
         {title}
 
-        {published}
+        {published ? `( ${ published })` : ''}
     </h4>
     <p>
-        {description}
+        {description ? description: <li>Sin ninguna descripcion </li>}
     </p>
 </Fragment>
 
