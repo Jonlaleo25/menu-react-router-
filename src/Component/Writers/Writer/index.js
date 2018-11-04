@@ -1,7 +1,7 @@
 import React, {  Fragment } from 'react';
 import { Link}    from  'react-router-dom';
 
-export default  ({ name, born,deceased, description,image,texts}) =>
+export default  ({ match: {url}, name, born,deceased, description,image,texts}) =>
 
 // console.log(match) ||
 <Fragment>
@@ -15,9 +15,11 @@ export default  ({ name, born,deceased, description,image,texts}) =>
 
 
 <ul>
-    {texts.map(text =>
+    {texts.map(({ id, title }) =>
         <li>
-           <Link to={`${url}/texts`}/>
+           <Link to={`${url}/texts/${id}`} >
+           {title}
+           </Link>
         </li>
     )}
 </ul>
