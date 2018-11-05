@@ -2,7 +2,8 @@ import React, {  Fragment } from 'react';
 import { Link, Route}    from  'react-router-dom';
 import { NotFound } from '../../Errors';
 import Text from './Text';
-export default  ({ match: {url}, name, born,deceased, description,image,texts}) =>
+
+export default  ({ match : {url}, name, born,deceased, description,image,texts}) =>
 
 // console.log(match) ||
 <Fragment>
@@ -12,24 +13,24 @@ export default  ({ match: {url}, name, born,deceased, description,image,texts}) 
 <p>
 {description}
 </p>
-
 <ul>
-    {texts.map(({ id, title }) =>
+    {texts.map(({id, title}) =>
         <li>
-           <Link to={`${url}/texts/${id}`} >
+           <Link to={`${url}/texts/${id}`}>
            {title}
            </Link>
         </li>
     )}
 </ul>
-<Route path={ `${url}/texts/:textId`} render={
+<Route path={`${url}/texts/:textId`} render={
     props => {
-        const text = texts.find(({ id }) => id === props.match.params.textId)
+        const text = texts.find( ({id}) => id === props.match.params.textId)
 
-        if( !text){
-          return <NotFound />
+        if(!text ){
+            return <NotFound />
         }
-        return  <Text {...text}/>
+        return <Text {...text} />;
     }
-} />
+}/>
+
 </Fragment>

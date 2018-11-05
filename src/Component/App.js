@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter,  Route,Switch }    from  'react-router-dom';
+import { BrowserRouter, Route,Switch }    from  'react-router-dom';
 import Writers   from './Writers';
 import { NotFound } from './Errors';
 import Layout from './Layout';
@@ -25,15 +25,33 @@ export default class extends Component{
   render() {
     const { writers} = this.state
     return <BrowserRouter>
-    <Layout writers={writers}>
-         <Switch>
+     
+          <Layout writers={writers}>
+                  {/* <ul>
+                    <li>
+                      <a href="/writers">Writers</a>
+                        <Link to="">
+                          Libro writers
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/writers">
+                            writers
+                        </Link>
+                    </li>
+                  </ul> */}
+                  
+        
+                  <Switch>
                       <Route exact path="/" render={()=><div>Home</div> } />
                       <Route path="/writers" render={
                         props=><Writers {...props} writers={writers}/>
-                      }/> 
+                      }/>
+                      
                       <Route component={NotFound}/>
                   </Switch>
-    </Layout>
+
+            </Layout>
       </BrowserRouter>
 
     
